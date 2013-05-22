@@ -1,0 +1,87 @@
+#!/usr/bin/env bash
+trap "rm -f setup.lock; exit 1" INT TERM
+export TOP_PID=$$
+[[ -f setup.lock ]] && echo 'Setup alreaady running; exiting...' && exit
+touch setup.lock
+
+successfully() {
+  $* || (echo "----- failed" 1>&2 && kill -s TERM $TOP_PID)
+}
+
+append_log() {
+  $* >> log/setup.log
+}
+
+
+append_log successfully mkdir -p tmp
+append_log successfully touch log/setup.log
+append_log successfully echo "\n\n----- Starting script/setup"
+
+if [ ! -d .bundle ]; then
+  echo "Oh. Hello there. Haven't seen you before..."
+  echo "This may take a second. Grab a snickers. Or something healthy."
+  echo "Tail the log/setup.log if you get bored."
+  echo
+fi
+
+if [ ! -f .env ]; then
+  echo "Creating .env file from example. Please edit it! To use: source .env"
+  successfully cp .env.example .env
+fi
+
+[[ -z "$RALS_ENV" ]] && eval $(cat .env)
+
+if [ ! -z "$WITH_DEP" ]; then
+  echo "Checking system dependencies..."
+  IS_MAC=false; IS_DEBIAN=false
+  [[ -f /etc/debian_version ]] && IS_DEBIAN=true
+  [[ $(command -v sw_vers) && $(sw_vers -productVersion | cut -f2 -d.) -ge 7 ]] && IS_MAC=true
+  if $IS_MAC; then
+    [[ -n "$TMUX" ]] && echo "Can't install dependency startup scripts inside tmux. Please rerun outside of tmux..." && exit 1
+    append_log gem list -i brewdler || gem install brewdler --no-rdoc --no-ri
+    append_log successfully brewdle install
+    append_log initdb /usr/local/var/postgres -E utf8
+    append_log ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents
+    append_log launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
+    append_log launchctl load ~/Library/LaunchAgents/homebrew.mxcl.memcached.plist
+    echo "#TODO: setup postgresql user"
+    # echo $PATH | grep $(cd $(which gem)/..;pwd) > /dev/null
+    # [[ $? -ne 0 ]] && echo 'For ruby gems to work, add the current path to your profile (.bashrc, .zshrc, etc):
+    # export PATH="$(cd $(which gem)/..;pwd):$PATH"'
+  fi
+fi
+
+echo "Installing libraries..."
+append_log successfully gem list -i bundler || gem install bundler
+append_log successfully bundle install --path vendor/bundle --binstubs vendor/bundle/bin
+
+if [ -z "$KEEPDB" ]; then
+  psql furfromhome_development --list > /dev/null 2>&1
+  if [ $? -ne 0 ]; then
+    echo "Creating databases..."
+    append_log successfully bundle exec rake db:create:all
+  fi
+
+  echo "Reloading the database..."
+  append_log successfully bundle exec rake db:migrate:reset db:seed
+fi
+
+ps ax | grep "memcache[d]" > /dev/null
+if [ $? -eq 0 ]; then
+  command -v nc > /dev/null
+  if [ $? -eq 0 ]; then
+    echo "Flushing Memcache..."
+    append_log successfully echo -e "flush_all\nquit\n" | nc 127.0.0.1 11211
+  else
+    echo "WARNING: Please install netcat for automatic flushing of memcache"
+  fi
+fi
+
+ps ax | grep "pow$" > /dev/null
+if [ $? -eq 0 ]; then
+  echo "Restarting Pow..."
+  touch tmp/restart.txt
+fi
+
+rm -f setup.lock
+echo "All done!"

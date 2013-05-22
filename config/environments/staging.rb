@@ -20,7 +20,7 @@ Furfromhome::Application.configure do
   # config.action_dispatch.rack_cache = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
-  config.serve_static_assets = true #NOTE: Set to true to fix heroku-deflater
+  config.serve_static_assets = false
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
@@ -40,10 +40,10 @@ Furfromhome::Application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  config.force_ssl = true
+  # config.force_ssl = true
 
   # Set to :debug to see everything in the log.
-  config.log_level = :info
+  config.log_level = :debug
 
   # Prepend all log lines with the following tags.
   # config.log_tags = [ :subdomain, :uuid ]
@@ -52,14 +52,10 @@ Furfromhome::Application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
 
   # Use a different cache store in production.
-  config.cache_store = :dalli_store
+  # config.cache_store = :mem_cache_store
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-  if ENV['CF_HOST']
-    config.action_controller.asset_host = "//#{ENV['CF_HOST']}"
-  else
-    config.action_controller.asset_host = "https://#{ENV['FOG_DIRECTORY']}.s3.amazonaws.com"
-  end
+  # config.action_controller.asset_host = "http://assets.example.com"
 
   # Precompile additional assets.
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
@@ -81,21 +77,4 @@ Furfromhome::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
-
-  # Devise wants this:
-  config.action_mailer.default_url_options = { host: 'furfromhome.com' }
-
-  # ActionMailer Config with Mandrill from Mailchimp for transactional mail
-  config.action_mailer.smtp_settings = {
-    address:   "smtp.mandrillapp.com",
-    port:      587,
-    user_name: ENV["MANDRILL_USERNAME"],
-    password:  ENV["MANDRILL_API_KEY"]
-  }
-
-  # Setup for production - deliveries, no errors raised
-  config.action_mailer.delivery_method       = :smtp
-  config.action_mailer.perform_deliveries    = true
-  config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default charset: "utf-8"
 end
