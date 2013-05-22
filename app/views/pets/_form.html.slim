@@ -1,0 +1,31 @@
+= simple_form_for @pet do |f|
+  - if @pet.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@pet.errors.count, "error")} prohibited this pet from being saved:"
+      ul
+        - @pet.errors.full_messages.each do |message|
+          li = message
+
+  = f.input :name
+  = f.input :color
+  = f.input :age
+  = f.input :weight
+  = f.input :markings
+  = f.input :gender
+  = f.input :collar
+  = f.input :collar_description
+  = f.input :chipped
+  = f.input :injured
+  = f.input :listing_type
+  = f.input :missing_since_found_at
+  = f.input :location
+  = f.input :latitude
+  = f.input :longitude
+  = f.input :description
+  = f.input :returned_to_owner
+  = f.input :scraping_script
+  = f.input :scraped_feed
+  = f.input :source_url
+  = f.input :breed
+  = f.input :user
+  = f.button :submit
