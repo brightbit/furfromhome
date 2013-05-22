@@ -5,6 +5,7 @@ ruby '2.0.0'
 gem 'rails', '4.0.0.rc1'
 
 # gem 'airbrake',        '~> 3.1.12' # Report exceptions in production #FIXME: Breaks zeus
+gem 'andand',           '> 0'
 gem 'asset_sync',           '~> 0.5.4'
 gem 'bootstrap-sass',       '~> 2.3.1.0'
 # gem 'carrierwave',          '~> 0.8.0'
