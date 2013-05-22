@@ -72,6 +72,10 @@ group :qa, :staging, :production do
   gem 'heroku-deflater', '~> 0.5.1'  # Compress page content
 end
 
+group :tasks do
+  gem 'snoo'
+end
+
 # group :doc do
 #   # bundle exec rake doc:rails generates the API under doc/api.
 #   gem 'sdoc', require: false
