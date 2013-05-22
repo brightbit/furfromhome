@@ -5,9 +5,9 @@ class PetsController < ApplicationController
   # GET /pets.json
   def index
     if params[:search].present?
-      @pets = Pet.near(params[:search], 15, order: 'distance')
+      @pets = Pet.near(params[:search], 15, order: 'distance').paginate(page: params[:page])
     else
-      @pets = Pet.all
+      @pets = Pet.all.paginate(page: params[:page])
     end
   end
 
