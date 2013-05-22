@@ -8,6 +8,17 @@ namespace :scrape do
     data = reddit.get_listing(subreddit: 'missingpetsinmoore', limit: 100)
     comments = data['data']['children'].map { |c| c['data'] }
 
+    def photo_url(url)
+      case url
+      when %r{^http://www.reddit.com/r/missingpetsinmoore/}
+        nil
+      when %r{^http://imgur.com/\w+$}
+        url + '.jpg'
+      else
+        url
+      end
+    end
+
     comments.each do |c|
       listing_type = case c['title']
                      when /^\[?FOUND/i
@@ -29,7 +40,9 @@ namespace :scrape do
         # markings:
         # gender:
         # collar:
-        pet.photo_url = "#{c['url']}"
+        pet.source_url = "http://www.reddit.com#{c['permalink']}"
+        pet.photo_url = photo_url(c['url'])
+
         # injured:
         pet.listing_type = listing_type
         # missing_since_found_at:
@@ -40,7 +53,6 @@ namespace :scrape do
         pet.returned_to_owner = false
         pet.scraping_script = 'reddit_missingpetsinmoore'
         pet.scraped_feed = 'http://www.reddit.com/r/missingpetsinmoore'
-        pet.source_url = "http://www.reddit.com#{c['permalink']}"
         # breed_id:
         # user:
 
