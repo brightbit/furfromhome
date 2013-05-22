@@ -17,6 +17,7 @@ gem 'filepicker-rails',     '~> 0.1'  # Not SemVer
 gem 'high_voltage',         '~> 1.2.2'
 # gem 'html5forms-rails',    '~> 0.1.4'
 gem 'jbuilder',             '~> 1.0.1'
+gem 'geocoder',             '~> 1.1.8'
 gem 'memcachier',           '~> 0.0.2'
 # gem 'modernizr-rails',     '~> 2.6.2'
 gem 'newrelic_rpm',         '~> 3.6.2'

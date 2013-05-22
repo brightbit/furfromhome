@@ -1,5 +1,10 @@
 h1 Listing pets
 
+= form_tag pets_path, method: :get do
+  p
+    = text_field_tag :search, params[:search]
+    = submit_tag "Search Near", name: nil
+
 table
   tr
     th
@@ -33,7 +38,7 @@ table
       td = pet.location
       td = link_to 'Show', pet
       td = link_to 'Edit', edit_pet_path(pet)
-      td = link_to 'Destroy', pet, :confirm => 'Are you sure?', :method => :delete
+      td = link_to 'Destroy', pet, confirm: 'Are you sure?', method: :delete
 
 br
 

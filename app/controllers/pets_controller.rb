@@ -4,7 +4,11 @@ class PetsController < ApplicationController
   # GET /pets
   # GET /pets.json
   def index
-    @pets = Pet.all
+    if params[:search].present?
+      @pets = Pet.near(params[:search], 15, order: 'distance')
+    else
+      @pets = Pet.all
+    end
   end
 
   # GET /pets/1
