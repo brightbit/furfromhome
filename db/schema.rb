@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 20130522061918) do
     t.float    "latitude"
     t.float    "longitude"
     t.text     "description"
-    t.boolean  "returned_to_owner"
+    t.boolean  "returned_to_owner",      default: false
     t.string   "scraping_script"
     t.string   "scraped_feed"
     t.string   "source_url"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20130522061918) do
   add_index "pets", ["user_id"], name: "index_pets_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
+    t.string   "name"
     t.boolean  "admin",                  default: false
     t.string   "avatar_url"
     t.string   "email",                  default: "",    null: false

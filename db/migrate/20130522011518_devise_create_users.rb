@@ -1,6 +1,7 @@
 class DeviseCreateUsers < ActiveRecord::Migration
   def change
     create_table(:users) do |t|
+      t.string :name
       t.boolean :admin, default: false
       t.string :avatar_url
 
