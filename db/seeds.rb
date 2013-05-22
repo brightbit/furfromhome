@@ -1,6 +1,8 @@
 require 'active_support'
 
-user = User.where(email: 'user@example.com').first || User.create!(email: 'user@example.com', password: "password", password_confirmation: 'password', admin: true)
+admin = User.where(email: 'admin@example.com').first || User.create!(email: 'admin@example.com', password: "password", password_confirmation: 'password')
+admin.add_role "admin"
+user  = User.where(email: 'user@example.com' ).first || User.create!(email: 'user@example.com',  password: "password", password_confirmation: 'password')
 
 def import_breed_names(species)
   File.readlines(File.realpath("../seeds/#{species}_breed_names.tsv", __FILE__)).each do |line|
