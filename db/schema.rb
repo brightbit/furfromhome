@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20130522035908) do
     t.string   "scraping_script"
     t.string   "scraped_feed"
     t.string   "source_url"
+    t.string   "photo_url"
     t.integer  "breed_id"
     t.integer  "user_id"
     t.datetime "created_at"
@@ -48,6 +49,7 @@ ActiveRecord::Schema.define(version: 20130522035908) do
 
   create_table "users", force: true do |t|
     t.boolean  "admin",                  default: false
+    t.string   "avatar_url"
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"

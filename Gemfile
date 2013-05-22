@@ -12,6 +12,7 @@ gem 'bootstrap-sass',       '~> 2.3.1.0'
 # gem 'chosen-rails',        '~> 0.9.14'
 gem 'dalli',                '~> 2.6.3'
 gem 'devise',               '~> 3.0.0.rc'
+gem 'filepicker-rails',     '~> 0.1'  # Not SemVer
 gem 'high_voltage',         '~> 1.2.2'
 # gem 'html5forms-rails',    '~> 0.1.4'
 gem 'jbuilder',             '~> 1.0.1'

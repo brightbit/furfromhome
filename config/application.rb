@@ -22,5 +22,8 @@ module Furfromhome
 
     # Raise errors when an unpermitted param is sent to a controller action
     # config.action_controller.action_on_unpermitted_parameters = :raise #FIXME: Add me back security yo
+
+    # Set the filerpicker.io api key
+    config.filepicker_rails.api_key = ENV['FILEPICKER_API_KEY']
   end
 end

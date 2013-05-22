@@ -6,6 +6,12 @@
         - @pet.errors.full_messages.each do |message|
           li = message
 
+  div
+    = f.label :photo_url, "Upload or change photo:"
+    = filepicker_image_tag f.object.photo_url, w: 60, h: 60, fit: 'clip' if f.object.photo_url
+    = f.filepicker_field :photo_url, onchange: "$('#pet_photo_url').val(arguments[0].fpfile.url)"
+    = f.input :photo_url, as: :hidden
+
   = f.input :name
   = f.input :color
   = f.input :age
