@@ -25,5 +25,8 @@ module Furfromhome
 
     # Set the filerpicker.io api key
     config.filepicker_rails.api_key = ENV['FILEPICKER_API_KEY']
+
+    # Load fonts into the asset pipeline
+    config.assets.paths << "#{Rails.root}/app/assets/fonts"
   end
 end

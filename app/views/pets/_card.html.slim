@@ -1,0 +1,21 @@
+.card[class="card-#{pet.listing_type if pet.listing_type}"]
+  = link_to pet do
+
+    - if pet.photo_url.present?
+      = filepicker_image_tag(pet.photo_url, w: 250, h: 200, fit: 'crop', class: "img")
+    - else
+      = image_tag "/assets/profile-default-dog.png"
+
+    - if pet.name.present?
+      h2== "&ldquo;#{pet.name}&rdquo;"
+
+    p
+      = "#{pet.color.capitalize}"
+      = " #{pet.gender.capitalize}"
+      = " #{pet.breed}"
+
+    p #{pet.listing_type.capitalize} at #{pet.location} on #{pet.missing_since_found_at.strftime("%m/%d/%Y")}
+
+  .actions
+    = link_to 'Edit', edit_pet_path(pet), class: "ss-icon" if current_user && current_user.can_update?(pet)
+    = link_to 'Delete', pet, confirm: 'Are you sure?', method: :delete, class: "ss-icon" if current_user && current_user.can_delete?(pet)

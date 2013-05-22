@@ -1,55 +1,22 @@
-h1 Listing pets
-
-= form_tag root_path, method: :get do
-  p
-    = text_field_tag :near,          params[:near]
-    = select_tag     :listing_type,  options_for_select([:lost, :found], params[:listing_type]), prompt: "Not Specified"
-    = text_field_tag :missing_since, params[:missing_since]
-    = select_tag :animal,            options_for_select(Breed.uniq.pluck(:species), params[:animal]), prompt: 'Not Specified'
-    = select_tag :color,             options_for_select(Pet::COLORS, params[:color]), prompt: 'Not Specified'
-    = select_tag :gender,            options_for_select([:male, :female], params[:gender]), prompt: 'Not Specified'
+= form_tag root_path, method: :get, class: "form-inline" do
+  .form-search
+    = text_field_tag :near,          params[:near], placeholder: "Near Location"
+    = select_tag     :listing_type,  options_for_select([:lost, :found], params[:listing_type]), prompt: "Type Not Specified"
+    = text_field_tag :missing_since, params[:missing_since], placeholder: "Missing Since"
+    = select_tag :animal,            options_for_select(Breed.uniq.pluck(:species), params[:animal]), prompt: 'Animal Not Specified'
+    = select_tag :color,             options_for_select(Pet::COLORS, params[:color]), prompt: 'Color Not Specified'
+    = select_tag :gender,            options_for_select([:male, :female], params[:gender]), prompt: 'Gender Not Specified'
     -#TODO: Make dynamic based on animal
     = select_tag :breed_id,          options_from_collection_for_select(BreedName.select(:id, :name), 'id', 'name', params[:breed_id]), prompt: 'Not Specified'
-
     = submit_tag "Search", name: nil
 
-table
-  tr
-    th
-    th Name
-    th Breed
-    th Color
-    th Gender
-    th Markings
-    th Collar
-    th Age
-    th Weight
-    th Found at
-    th Location
-    th
-    th
-    th
 
-  - @pets.each do |pet|
-    tr
-      td = link_to (pet.photo_url ? filepicker_image_tag(pet.photo_url, w: 60, h: 60, fit: 'clip') : ''), \
-           pet.source_url
-      td = pet.name
-      td = pet.breed
-      td = pet.color
-      td = pet.gender
-      td = pet.markings
-      td = pet.collar
-      td = pet.age
-      td = pet.weight
-      td = pet.missing_since_found_at
-      td = pet.location
-      td = link_to 'Show', pet
-      td = link_to 'Edit', edit_pet_path(pet)
-      td = link_to 'Destroy', pet, confirm: 'Are you sure?', method: :delete
+  ul.list-cards.list-simple
+    - @pets.each do |pet|
+      li= render "card", pet: pet
 
 = will_paginate @pets
 
 br
 
-= link_to 'New Pet', new_pet_path
+= link_to 'New Pet', new_pet_path, class: "btn"

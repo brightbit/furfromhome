@@ -1,4 +1,4 @@
-= simple_form_for @pet do |f|
+= simple_form_for @pet, html: { class: 'form-horizontal' } do |f|
   - if @pet.errors.any?
     #error_explanation
       h2 = "#{pluralize(@pet.errors.count, "error")} prohibited this pet from being saved:"
@@ -13,9 +13,9 @@
     = f.input :photo_url, as: :hidden
 
   = f.input :name
-  = f.input :breed
+  = f.association :breed
   = f.input :color
-  = f.input :gender, collection: [:male, :female], prompt: "-- Select Gender --"
+  = f.input :gender, collection: [:male, :female], prompt: "Select Gender"
   = f.input :age
   = f.input :weight
   = f.input :markings

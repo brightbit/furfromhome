@@ -1,0 +1,8 @@
+li
+  - if pet.photo_url.present?
+    = filepicker_image_tag(pet.photo_url, w: 50, h: 50, fit: 'crop', class: "img")
+  - else
+    = image_tag "/assets/profile-default-dog.png"
+
+  p
+    =link_to pet.name, pet

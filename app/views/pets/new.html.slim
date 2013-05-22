@@ -1,5 +1,8 @@
-h1 New pet
+.container
 
-== render 'form'
+  p.page-actions = link_to "Back", pets_path, class: "ss-navigateleft"
 
-= link_to 'Back', pets_path
+  .page
+    h2 New pet
+
+    == render 'form'
