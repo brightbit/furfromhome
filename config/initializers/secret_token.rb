@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Furfromhome::Application.config.secret_key_base = '3deda3b2ee422da20be2df0e5eee6ba7a232903e339fef3ce5dc7f3a48b57b11eedd86cad1e550915b8b67c2fe298e8fe6f0bdf742aaf5697ae1c56e582e8251'
+Furfromhome::Application.config.secret_key_base = ENV['RAILS_SECRET_KEY']
