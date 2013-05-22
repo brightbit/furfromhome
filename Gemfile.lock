@@ -84,6 +84,9 @@ GEM
     execjs (1.4.0)
       multi_json (~> 1.0)
     fastercsv (1.5.5)
+    filepicker-rails (0.1)
+      multi_json (~> 1.6)
+      railties (>= 3.1.0, < 5.0)
     fog (1.11.1)
       builder
       excon (~> 0.20)
@@ -266,6 +269,7 @@ DEPENDENCIES
   dalli (~> 2.6.3)
   devise (~> 3.0.0.rc)
   dotenv-rails
+  filepicker-rails (~> 0.1)
   foreman
   heroku-deflater (~> 0.5.1)
   high_voltage (~> 1.2.2)
