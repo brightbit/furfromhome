@@ -6,6 +6,7 @@ class Pet < ActiveRecord::Base
 
   # Validations
   validate :location, presense: true
+  validate :listing_type, in: [:lost, :found]
 
   # Callbacks
   after_validation :geocode, if: :location_changed?
