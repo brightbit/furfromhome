@@ -17,6 +17,11 @@ append_log successfully mkdir -p tmp
 append_log successfully touch log/setup.log
 append_log successfully echo "\n\n----- Starting script/setup"
 
+append_log git config heroku.account work
+append_log git config heroku.remote staging
+append_log git remote add staging git@heroku.work:furfromhome-staging.git
+append_log git remote add production git@heroku.work:furfromhome-production.git
+
 if [ ! -d .bundle ]; then
   echo "Oh. Hello there. Haven't seen you before..."
   echo "This may take a second. Grab a snickers. Or something healthy."
