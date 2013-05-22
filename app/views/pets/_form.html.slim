@@ -15,7 +15,7 @@
   = f.input :name
   = f.input :breed
   = f.input :color
-  = f.input :gender
+  = f.input :gender, collection: [:male, :female], prompt: "-- Select Gender --"
   = f.input :age
   = f.input :weight
   = f.input :markings
@@ -23,7 +23,7 @@
   = f.input :collar_description
   = f.input :chipped
   = f.input :injured
-  = f.input :listing_type
+  = f.input :listing_type, collection: [:lost, :found], selected: :found
   = f.input :missing_since_found_at
   = f.input :location
   -# = f.input :latitude

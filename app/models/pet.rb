@@ -5,8 +5,9 @@ class Pet < ActiveRecord::Base
   geocoded_by :location
 
   # Validations
-  validate :location, presense: true
-  validate :listing_type, in: [:lost, :found]
+  validates :location, presence: true
+  validates :listing_type, inclusion: { in: ['lost', 'found'] }
+  validates :gender, inclusion: { in: ['male', 'female'] }
 
   # Callbacks
   after_validation :geocode, if: :location_changed?
