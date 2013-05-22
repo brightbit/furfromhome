@@ -17,7 +17,7 @@ class CreatePets < ActiveRecord::Migration
       t.float :latitude
       t.float :longitude
       t.text :description
-      t.boolean :returned_to_owner
+      t.boolean :returned_to_owner, default: false
       t.string :scraping_script
       t.string :scraped_feed
       t.string :source_url
