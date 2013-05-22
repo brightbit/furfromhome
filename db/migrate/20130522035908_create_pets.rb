@@ -24,6 +24,7 @@ class CreatePets < ActiveRecord::Migration
       t.string :photo_url
       t.references :breed, index: true
       t.references :user, index: true
+      t.integer :author_id, index: true
 
       t.timestamps
     end

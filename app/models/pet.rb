@@ -1,6 +1,9 @@
 class Pet < ActiveRecord::Base
   COLORS = %w[brown white black] #TODO: Add more colors
   # Assocations
+  resourcify
+  include Authority::Abilities
+  belongs_to :author, class_name: 'User'
   belongs_to :breed
   belongs_to :user
   geocoded_by :location
