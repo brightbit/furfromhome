@@ -21,6 +21,6 @@ module Furfromhome
     # config.i18n.default_locale = :de
 
     # Raise errors when an unpermitted param is sent to a controller action
-    config.action_controller.action_on_unpermitted_parameters = :raise
+    # config.action_controller.action_on_unpermitted_parameters = :raise #FIXME: Add me back security yo
   end
 end

@@ -1,0 +1,61 @@
+h1 Listing pets
+
+table
+  tr
+    th Name
+    th Color
+    th Age
+    th Weight
+    th Markings
+    th Gender
+    th Collar
+    th Collar description
+    th Chipped
+    th Injured
+    th Listing type
+    th Missing since found at
+    th Location
+    th Latitude
+    th Longitude
+    th Description
+    th Returned to owner
+    th Scraping script
+    th Scraped feed
+    th Source url
+    th Breed
+    th User
+    th
+    th
+    th
+
+  - @pets.each do |pet|
+    tr
+      td = pet.name
+      td = pet.color
+      td = pet.age
+      td = pet.weight
+      td = pet.markings
+      td = pet.gender
+      td = pet.collar
+      td = pet.collar_description
+      td = pet.chipped
+      td = pet.injured
+      td = pet.listing_type
+      td = pet.missing_since_found_at
+      td = pet.location
+      td = pet.latitude
+      td = pet.longitude
+      td = pet.description
+      td = pet.returned_to_owner
+      td = pet.scraping_script
+      td = pet.scraped_feed
+      td = pet.source_url
+      td = pet.breed
+      td = pet.user
+      td = link_to 'Show', pet
+      td = link_to 'Edit', edit_pet_path(pet)
+      td = link_to 'Destroy', pet, :confirm => 'Are you sure?', :method => :delete
+
+br
+
+= link_to 'New Pet', new_pet_path
