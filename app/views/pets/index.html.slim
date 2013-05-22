@@ -3,7 +3,7 @@ h1 Listing pets
 = form_tag root_path, method: :get do
   p
     = text_field_tag :near,          params[:near]
-    = select_tag     :listing_type,  options_for_select([:lost, :found], params[:listing_type])
+    = select_tag     :listing_type,  options_for_select([:lost, :found], params[:listing_type]), prompt: "Not Specified"
     = text_field_tag :missing_since, params[:missing_since]
     = select_tag :animal,            options_for_select(Breed.uniq.pluck(:species), params[:animal]), prompt: 'Not Specified'
     = select_tag :color,             options_for_select(Pet::COLORS, params[:color]), prompt: 'Not Specified'
