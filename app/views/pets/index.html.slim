@@ -1,9 +1,17 @@
 h1 Listing pets
 
-= form_tag pets_path, method: :get do
+= form_tag root_path, method: :get do
   p
-    = text_field_tag :search, params[:search]
-    = submit_tag "Search Near", name: nil
+    = text_field_tag :near,          params[:near]
+    = select_tag     :listing_type,  options_for_select([:lost, :found], params[:listing_type])
+    = text_field_tag :missing_since, params[:missing_since]
+    = select_tag :animal,            options_for_select(Breed.uniq.pluck(:species), params[:animal]), prompt: 'Not Specified'
+    = select_tag :color,             options_for_select(Pet::COLORS, params[:color]), prompt: 'Not Specified'
+    = select_tag :gender,            options_for_select([:male, :female], params[:gender]), prompt: 'Not Specified'
+    -#TODO: Make dynamic based on animal
+    = select_tag :breed,             options_for_select(BreedName.uniq.pluck(:name), params[:breed]), prompt: 'Not Specified'
+
+    = submit_tag "Search", name: nil
 
 table
   tr
