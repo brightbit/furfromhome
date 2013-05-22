@@ -1,0 +1,49 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  color: MyString
+  age: 1
+  weight: 1
+  markings: MyString
+  gender: MyString
+  collar: false
+  collar_description: MyString
+  chipped: false
+  injured: false
+  listing_type: MyString
+  missing_since_found_at: 2013-05-21 22:59:08
+  location: MyString
+  latitude: 1.5
+  longitude: 1.5
+  description: MyText
+  returned_to_owner: false
+  scraping_script: MyString
+  scraped_feed: MyString
+  source_url: MyString
+  breed_id: 
+  user_id: 
+
+two:
+  name: MyString
+  color: MyString
+  age: 1
+  weight: 1
+  markings: MyString
+  gender: MyString
+  collar: false
+  collar_description: MyString
+  chipped: false
+  injured: false
+  listing_type: MyString
+  missing_since_found_at: 2013-05-21 22:59:08
+  location: MyString
+  latitude: 1.5
+  longitude: 1.5
+  description: MyText
+  returned_to_owner: false
+  scraping_script: MyString
+  scraped_feed: MyString
+  source_url: MyString
+  breed_id: 
+  user_id: 

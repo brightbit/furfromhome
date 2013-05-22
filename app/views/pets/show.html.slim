@@ -1,0 +1,72 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @pet.name
+p
+  strong Color:
+  = @pet.color
+p
+  strong Age:
+  = @pet.age
+p
+  strong Weight:
+  = @pet.weight
+p
+  strong Markings:
+  = @pet.markings
+p
+  strong Gender:
+  = @pet.gender
+p
+  strong Collar:
+  = @pet.collar
+p
+  strong Collar description:
+  = @pet.collar_description
+p
+  strong Chipped:
+  = @pet.chipped
+p
+  strong Injured:
+  = @pet.injured
+p
+  strong Listing type:
+  = @pet.listing_type
+p
+  strong Missing since found at:
+  = @pet.missing_since_found_at
+p
+  strong Location:
+  = @pet.location
+p
+  strong Latitude:
+  = @pet.latitude
+p
+  strong Longitude:
+  = @pet.longitude
+p
+  strong Description:
+  = @pet.description
+p
+  strong Returned to owner:
+  = @pet.returned_to_owner
+p
+  strong Scraping script:
+  = @pet.scraping_script
+p
+  strong Scraped feed:
+  = @pet.scraped_feed
+p
+  strong Source url:
+  = @pet.source_url
+p
+  strong Breed:
+  = @pet.breed
+p
+  strong User:
+  = @pet.user
+
+= link_to 'Edit', edit_pet_path(@pet)
+'|
+= link_to 'Back', pets_path
