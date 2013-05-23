@@ -10,8 +10,8 @@
       h2== "&ldquo;#{pet.name}&rdquo;"
 
     p
-      = "#{pet.color.capitalize}"
-      = " #{pet.gender.capitalize}"
+      = "#{pet.color.capitalize}" if pet.color
+      = " #{pet.gender.capitalize}" if pet.gender
       = " #{pet.breed}"
 
     p #{pet.listing_type.capitalize} at #{pet.location} on #{pet.missing_since_found_at.strftime("%m/%d/%Y")}
