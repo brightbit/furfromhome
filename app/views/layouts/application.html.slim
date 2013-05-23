@@ -8,6 +8,6 @@ html
     = filepicker_js_include_tag
     = csrf_meta_tags
   body
-    div.container
-      = render partial: "shared/header"
+    = render partial: "shared/header"
+    #content
       = yield

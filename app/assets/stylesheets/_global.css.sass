@@ -1,0 +1,174 @@
+html
+  background: #f3f3f3
+
+body
+  background: #f3f3f3
+  color: $text-color
+  font-family: $font-copy
+  font-size: 13px
+  line-height: 18px
+  padding-top: 60px
+
+p, ol, ul, td
+  font-family: $font-copy
+  font-size: 13px
+  line-height: 18px
+
+ul.list-simple
+  margin: 0
+  list-style: none
+
+dl
+  margin: 0
+  overflow: hidden
+  dt
+    float: left
+    clear: both
+    width: 130px
+    margin: 0 0 5px 0
+    display: inline-block
+  dd
+    float: left
+    margin: 0 0 0 10px
+    display: inline-block
+
+section, article, .page
+  position: relative
+  z-index: 1
+  clear: both
+
+section
+  padding-bottom: 40px
+
+.pull-left
+  clear: none
+  float: left
+
+.pull-right
+  clear: none
+  float: right
+
+
+.actions
+  position: absolute
+  z-index: 2
+  top: -8px
+  right: -12px
+  .ss-icon
+    display: block
+    padding-top: 2px
+    margin-bottom: -4px
+    height: 18px
+    width: 20px
+    color: #fff
+    background: $text-color-strong
+    text-align: center
+    font-size: 12px
+    @include border-radius(15px)
+
+
+/* Text Elements */
+h1, h2, h3, h4, h5
+  font-family: $font-headings
+  margin: 0 0 0.5em
+
+h1
+  font-size: 5em
+  line-height: 1em
+
+h2
+  font-size: 2.5em
+  line-height: 1em
+
+h3
+  font-size: 1.5em
+  line-height: 1em
+
+h4
+  font-size: 1.3em
+  line-height: 1em
+
+h5
+  font-size: 1.2em
+  line-height: 1em
+
+pre
+  background-color: #eee
+  padding: 10px
+  font-size: 11px
+
+a
+  color: $blue
+  transition: all .25s
+  &:hover
+    color: lighten($blue, 10%)
+    text-decoration: none
+  &:visited
+    color: darken($blue, 10%)
+  &:active
+    position: relative
+    top: 1px
+
+
+div
+  &.field, &.actions
+    margin-bottom: 10px
+
+
+/* Errors */
+#notice
+  color: green
+
+.field_with_errors
+  padding: 2px
+  background-color: red
+  display: table
+
+#error_explanation
+  width: 450px
+  border: 2px solid red
+  padding: 7px
+  padding-bottom: 0
+  margin-bottom: 20px
+  background-color: #f0f0f0
+  h2
+    text-align: left
+    font-weight: bold
+    padding: 5px 5px 5px 15px
+    font-size: 12px
+    margin: -7px
+    margin-bottom: 0px
+    background-color: #c00
+    color: #fff
+  
+  ul li
+    font-size: 12px
+    list-style: square
+  
+
+/* Forms */
+input[type="submit"], button
+  @extend .btn
+
+a.btn
+  color: #333
+
+
+
+/* Content */
+.page
+  background: #fff
+  margin: 20px -20px
+  padding: 20px
+  @include border-radius($radius)
+  @include box-shadow($shadow)
+
+.page-actions
+  margin: 10px 0 0
+  color: $text-color-weak
+  font-size: 12px
+  a
+    color: $text-color-weak
+    &:before
+      font-size: 12px
+      top: 1px

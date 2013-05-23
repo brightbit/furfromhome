@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20130522222643) do
     t.string   "scraped_feed"
     t.string   "source_url"
     t.string   "photo_url"
+    t.string   "cached_species"
     t.integer  "breed_id"
     t.integer  "user_id"
     t.integer  "author_id"
