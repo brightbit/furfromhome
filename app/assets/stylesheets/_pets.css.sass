@@ -1,0 +1,45 @@
+.list-cards
+  padding: 0 20px
+  li
+    float: left
+
+.card
+  width: 230px
+  margin: 0 10px 20px
+  padding-bottom: 10px
+  background: #fff
+  @include border-radius($radius)
+  @include box-shadow($shadow)
+  position: relative
+  z-index: 1
+  font-size: 12px
+
+  a
+    color: $text-color
+
+  img
+    margin: 0 0 20px
+    @include border-radius($radius $radius 0 0)
+
+  h2, p
+    margin: 0 10px 10px
+
+
+
+.list-pets
+  @extend .list-simple
+  li
+    clear: both
+    overflow: hidden
+    padding: 5px 0
+    border-bottom: 1px solid #eee
+    &:last-child
+      border-bottom: 0
+    img
+      float: left
+      margin-right: 10px
+    a
+      display: block
+      padding: 12px 0
+      font-size: 24px
+      font-family: $font-headings

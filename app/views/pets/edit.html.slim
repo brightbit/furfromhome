@@ -1,8 +1,8 @@
-h1 Editing pet
+.container
 
-== render 'form'
+  p.page-actions = link_to "Back", pets_path, class: "ss-navigateleft"
 
-= link_to 'Show', @pet
-'|
-= link_to 'Back', pets_path
+  .page
+    h2 Editing #{ @pet.name.present? ? @pet.name : "pet" }
 
+    == render 'form'

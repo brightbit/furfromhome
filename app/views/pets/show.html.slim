@@ -1,83 +1,77 @@
-p#notice = notice
+-if notice
+  p#notice= notice
 
-= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@pet.latitude}%2C#{@pet.longitude}"
+.container
 
-- nearby_pets = @pet.nearbys(5).try(:limit, 5)
-- if nearby_pets
-  h3 Nearby pets
-  ul
-    - nearby_pets && nearby_pets.each do |pet|
-      li #{link_to pet}
 
-p
-  = filepicker_image_tag @pet.photo_url, w: 60, h: 60, fit: 'clip' if @pet.photo_url
-p
-  strong Name:
-  = @pet.name
-p
-  strong Color:
-  = @pet.color
-p
-  strong Age:
-  = @pet.age
-p
-  strong Weight:
-  = @pet.weight
-p
-  strong Markings:
-  = @pet.markings
-p
-  strong Gender:
-  = @pet.gender
-p
-  strong Collar:
-  = @pet.collar
-p
-  strong Collar description:
-  = @pet.collar_description
-p
-  strong Chipped:
-  = @pet.chipped
-p
-  strong Injured:
-  = @pet.injured
-p
-  strong Listing type:
-  = @pet.listing_type
-p
-  strong Missing since found at:
-  = @pet.missing_since_found_at
-p
-  strong Location:
-  = @pet.location
-p
-  strong Latitude:
-  = @pet.latitude
-p
-  strong Longitude:
-  = @pet.longitude
-p
-  strong Description:
-  = @pet.description
-p
-  strong Returned to owner:
-  = @pet.returned_to_owner
-p
-  strong Scraping script:
-  = @pet.scraping_script
-p
-  strong Scraped feed:
-  = @pet.scraped_feed
-p
-  strong Source url:
-  = @pet.source_url
-p
-  strong Breed:
-  = @pet.breed
-p
-  strong User:
-  = @pet.user
+  p.page-actions = link_to "Back", :back, class: "ss-navigateleft"
 
-= link_to 'Edit', edit_pet_path(@pet)
-'|
-= link_to 'Back', pets_path
+  .page
+
+    .actions
+      = link_to 'Edit', edit_pet_path(@pet), class: "ss-icon" if current_user && current_user.can_update?(@pet)
+      = link_to 'Delete', @pet, confirm: 'Are you sure?', method: :delete, class: "ss-icon" if current_user && current_user.can_delete?(@pet)
+
+    .row
+
+      .span8
+
+        - if @pet.name.present?
+          h2== "&ldquo;#{@pet.name}&rdquo;"
+
+        h3
+          = "#{@pet.color.capitalize}" if @pet.color
+          = " #{@pet.gender.capitalize}" if @pet.gender
+          = " #{@pet.breed}"
+
+        p.ss-search
+          = "#{@pet.listing_type.capitalize} at #{@pet.location} #{time_ago_in_words(@pet.missing_since_found_at)} ago"
+
+        - if @pet.description
+          p
+            = @pet.description
+
+        hr
+
+        section.meta
+
+          dl
+            - if @pet.age?
+              dt Age: 
+              dd= @pet.age
+
+            - if @pet.weight?
+              dt Weight:
+              dd= "#{@pet.weight} pounds"
+
+            - if @pet.markings.present?
+              dt Markings: 
+              dd= @pet.markings
+
+            - if @pet.collar
+              dt Collar:
+              dd= @pet.collar_description
+            
+            dt Microchipped: 
+            dd= @pet.chipped ? "Yes" : "No"
+
+            dt Injured: 
+            dd= @pet.injured ? "Yes" : "No"
+
+            dt Returned to owner: 
+            dd= @pet.returned_to_owner ? "Yes" : "No"
+
+      .span4
+
+        section
+          p = filepicker_image_tag @pet.photo_url, w: 400, h: 360, fit: 'crop' if @pet.photo_url
+
+          p = image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@pet.latitude}%2C#{@pet.longitude}"
+
+        section
+          - nearby_pets = @pet.nearbys(5).try(:limit, 5)
+          - if nearby_pets.any?
+            h3 Nearby pets
+            ul.list-pets
+              - nearby_pets && nearby_pets.each do |pet|
+                = render "list_item", pet: pet

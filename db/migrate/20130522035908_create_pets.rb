@@ -26,8 +26,6 @@ class CreatePets < ActiveRecord::Migration
       t.references :breed, index: true
       t.references :user, index: true
       t.integer :author_id, index: true
-
-
       t.timestamps
     end
   end
