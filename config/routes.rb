@@ -1,7 +1,7 @@
 Furfromhome::Application.routes.draw do
   devise_for :users
 
-  resources :pets, only: [:show, :new, :edit, :create, :destroy]
+  resources :pets, except: [:index]
   get '/pets' => redirect('/')
   root to: 'pets#index'
 

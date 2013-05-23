@@ -4,9 +4,9 @@ ruby '2.0.0'
 
 gem 'rails', '4.0.0.rc1'
 
-# gem 'airbrake',        '~> 3.1.12' # Report exceptions in production #FIXME: Breaks zeus
-gem 'andand',           '> 0'
+gem 'andand',               '~> 1.3.3'
 gem 'asset_sync',           '~> 0.5.4'
+gem 'authority',            '~> 2.5.0'
 gem 'bootstrap-sass',       '~> 2.3.1.0'
 gem 'bootstrap-will_paginate', '~> 0.0.9'
 # gem 'carrierwave',          '~> 0.8.0'
@@ -26,6 +26,7 @@ gem 'newrelic_rpm',         '~> 3.6.2'
 gem 'pg',                   '~> 0.15.1'
 gem 'queue_classic',        '~> 2.1.4'
 gem 'rack-canonical-host',  '~> 0.0.8'
+gem 'rolify',               '~> 3.2.0'
 gem 'simple_form',          '~> 3.0.0.rc'
 gem 'turbolinks',           '~> 1.1.1'
 gem 'unicorn',              '~> 4.6.2'
@@ -73,6 +74,7 @@ end
 
 group :qa, :staging, :production do
   # gem 'rack-mini-profiler' #NOTE: To use with heroku-deflator see: https://github.com/SamSaffron/MiniProfiler/issues/131
+  gem 'airbrake',        '~> 3.1.12' # Report exceptions in production
   gem 'heroku-deflater', '~> 0.5.1'  # Compress page content
 end
 
