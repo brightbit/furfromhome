@@ -9,12 +9,15 @@
     - if pet.name.present?
       h2== "&ldquo;#{pet.name}&rdquo;"
 
-    p
-      = "#{pet.color.capitalize}" if pet.color
-      = " #{pet.gender.capitalize}" if pet.gender
-      = " #{pet.breed}"
+    - if pet.color || pet.gender || pet.breed
+      p
+        = "#{pet.color.capitalize}" if pet.color
+        = " #{pet.gender.capitalize}" if pet.gender
+        = " #{pet.breed}" if pet.gender
 
-    p #{pet.listing_type.capitalize} at #{pet.location} on #{pet.missing_since_found_at.strftime("%m/%d/%Y")}
+
+    p.ss-search
+      = "#{pet.listing_type.capitalize} at #{pet.location} #{time_ago_in_words(pet.missing_since_found_at)} ago"
 
   .actions
     = link_to 'Edit', edit_pet_path(pet), class: "ss-icon" if current_user && current_user.can_update?(pet)

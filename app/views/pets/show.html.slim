@@ -24,7 +24,8 @@
           = " #{@pet.gender.capitalize}" if @pet.gender
           = " #{@pet.breed}"
 
-        p.ss-search #{@pet.listing_type.capitalize} at #{@pet.location} on #{@pet.missing_since_found_at.strftime("%m/%d/%Y")}
+        p.ss-search
+          = "#{@pet.listing_type.capitalize} at #{@pet.location} #{time_ago_in_words(@pet.missing_since_found_at)} ago"
 
         - if @pet.description
           p
