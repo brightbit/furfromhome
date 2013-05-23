@@ -22,9 +22,11 @@ class CreatePets < ActiveRecord::Migration
       t.string :scraped_feed
       t.string :source_url
       t.string :photo_url
+      t.string :cached_species, index: true
       t.references :breed, index: true
       t.references :user, index: true
       t.integer :author_id, index: true
+
 
       t.timestamps
     end

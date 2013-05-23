@@ -6,7 +6,7 @@ class PetsController < ApplicationController
   has_scope :listing_type
   has_scope :missing_since
   has_scope :source
-  has_scope :breed
+  has_scope :breed_id
   has_scope :animal
   has_scope :color
   has_scope :gender
