@@ -1,14 +1,14 @@
-= form_tag root_path, method: :get, class: "form-inline" do
-  .form-search
-    = text_field_tag :near,          params[:near], placeholder: "Near Location"
-    = select_tag     :listing_type,  options_for_select([:lost, :found], params[:listing_type]), prompt: "Type Not Specified"
-    = text_field_tag :missing_since, params[:missing_since], placeholder: "Missing Since"
-    = select_tag :animal,            options_for_select(Breed.uniq.pluck(:species), params[:animal]), prompt: 'Animal Not Specified'
-    = select_tag :color,             options_for_select(Pet::COLORS, params[:color]), prompt: 'Color Not Specified'
-    = select_tag :gender,            options_for_select([:male, :female], params[:gender]), prompt: 'Gender Not Specified'
+= form_tag root_path, method: :get, id: "pets-index" do
+  ul.form-search.sidebar
+    li= text_field_tag :near,          params[:near], placeholder: "Near Location"
+    li= select_tag     :listing_type,  options_for_select([:lost, :found], params[:listing_type]), prompt: "Type Not Specified"
+    li= text_field_tag :missing_since, params[:missing_since], placeholder: "Missing Since"
+    li= select_tag :animal,            options_for_select(Breed.uniq.pluck(:species), params[:animal]), prompt: 'Animal Not Specified'
+    li= select_tag :color,             options_for_select(Pet::COLORS, params[:color]), prompt: 'Color Not Specified'
+    li= select_tag :gender,            options_for_select([:male, :female], params[:gender]), prompt: 'Gender Not Specified'
     -#TODO: Make dynamic based on animal
-    = select_tag :breed_id,          options_from_collection_for_select(BreedName.select(:id, :name), 'id', 'name', params[:breed_id]), prompt: 'Not Specified'
-    = submit_tag "Search", name: nil
+    li= select_tag :breed_id,          options_from_collection_for_select(BreedName.select(:id, :name), 'id', 'name', params[:breed_id]), prompt: 'Not Specified', class: "chosen"
+    li= submit_tag "Search", name: nil, class: "btn btn-primary"
 
 
   ul.list-cards.list-simple

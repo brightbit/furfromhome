@@ -9,6 +9,9 @@ body
   line-height: 18px
   padding-top: 60px
 
+*
+  @include box-sizing(border-box)
+
 p, ol, ul, td
   font-family: $font-copy
   font-size: 13px
@@ -147,6 +150,7 @@ div
   
 
 /* Forms */
+
 input[type="submit"], button
   @extend .btn
 
@@ -172,3 +176,21 @@ a.btn
     &:before
       font-size: 12px
       top: 1px
+
+.pagination
+  text-align: center
+
+.sidebar
+  @extend .list-simple
+  position: fixed
+  top: 50px
+  bottom: 0
+  left: 0
+  width: 220px
+  padding: 10px
+
+  li
+    padding: 10px 0
+
+  input, select
+    width: 100%

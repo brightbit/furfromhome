@@ -5,6 +5,8 @@
 #= require_tree .
 #= require jquery.imagesloaded.min
 #= require packery.pkgd.min
+#= require chosen-jquery
+#= require dropkick
 
 ##
 # App
@@ -13,6 +15,13 @@ $ ->
 
   $(".list-cards").imagesLoaded ->
     $(".list-cards").packery()
+
+  # enable chosen js
+  $('.chosen').chosen
+    allow_single_deselect: true
+    no_results_text: 'No results matched'
+
+  $('select:not(.chosen)').dropkick()
 
 
 ##
@@ -24,3 +33,10 @@ $(window).bind 'page:load', ->
 
   $(".list-cards").imagesLoaded ->
     $(".list-cards").packery()
+
+  # enable chosen js
+  $('.chosen').chosen
+    allow_single_deselect: true
+    no_results_text: 'No results matched'
+
+  $('select:not(.chosen)').dropkick()

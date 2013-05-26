@@ -1,5 +1,5 @@
 .navbar
-  height: 40px
+  height: 50px
   padding: 10px 20px
   color: #fff
   background: #3691e0
@@ -17,6 +17,10 @@
         &:hover
           color: #ddd
 
+    &.user-nav
+      @media screen and (min-width:$medium-screen)
+        float: right
+
   h1.logo
     font-size: 28px
     width: 200px
@@ -25,7 +29,7 @@
 
 
 .form-search
-  padding: 20px
+  padding: 10px 20px
   text-align: center
   margin-bottom: 40px
   background: #fff
