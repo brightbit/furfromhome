@@ -15,5 +15,8 @@ html
     meta name="apple-mobile-web-app-status-bar-style" content="black"
   body
     = render partial: "shared/header"
+
     #content
       = yield
+      
+    = render partial: "shared/footer"

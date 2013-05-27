@@ -11,8 +11,12 @@
     li= submit_tag "Search", name: nil, class: "btn btn-primary"
 
 
-  ul.list-cards.list-simple
-    - @pets.each do |pet|
-      li= render "card", pet: pet
+  .results
+    - if @pets.any?
+      ul.list-cards.list-simple
+        - @pets.each do |pet|
+          li= render "card", pet: pet
+    - else
+      .empty Sorry, we didn't find any pets that match that description
 
 = will_paginate @pets
