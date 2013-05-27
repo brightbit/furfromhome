@@ -157,6 +157,98 @@ input[type="submit"], button
 a.btn
   color: #333
 
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input
+  height: 35px
+
+
+
+/* Dropkick and Chosen */
+.dk_container
+  @include gradient-vertical(#fff,#f5f5f5)
+  @include border-radius($radius)
+  .dk_toggle
+    background: image-url("dropdown.png") right 12px no-repeat
+    border: 1px solid #CCC
+    padding: 10px 45px 10px 10px
+    font-weight: normal
+    color: $text-color
+    &:hover
+      color: $text-color
+  &.dk_open
+    z-index: 3
+    .dk_toggle
+      border-color: rgba(82, 168, 236, 0.8)
+  .dk_options
+    @include box-shadow($shadow)
+    ul
+      border-color: #AAA
+      margin: 0
+      li
+        padding: 0
+        a
+          font-size: 12px
+          line-height: 1em
+          font-weight: normal
+          text-shadow: none
+          padding: 5px 10px
+          border-bottom-color: rgba(0,0,0,0.1)
+        &.dk_option_current, &:hover
+          a
+            background: $blue
+
+.chzn-container
+  .chzn-single
+    height: 35px
+    border: 1px solid #CCC
+    @include gradient-vertical(#fff,#f5f5f5)
+    @include border-radius($radius)
+    padding: 10px 45px 10px 10px
+    font-weight: normal
+    color: $text-color
+    line-height: 1em
+    div b
+      display: block
+      width: 20px
+      height: 10px
+      margin-top: 11px
+      background: image-url("dropdown.png") 0 0 no-repeat !important
+  .chzn-drop
+    border-color: #AAA
+    @include box-shadow($shadow)
+  .chzn-search input
+    height: 25px
+  .chzn-results
+    margin: 0
+    padding: 0
+    li
+      font-size: 12px
+      line-height: 20px
+      font-weight: normal
+      text-shadow: none
+      padding: 5px 10px
+      border-bottom: 1px solid rgba(0,0,0,0.1)
+      &.result-selected, &:hover
+        color: #fff
+        background: $blue
+
+
+
 
 
 /* Content */
