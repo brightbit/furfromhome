@@ -8,24 +8,26 @@ html
     = filepicker_js_include_tag
     = csrf_meta_tags
 
-    meta name="HandheldFriendly" content="True"
-    meta name="MobileOptimized" content="320"
-    meta name="viewport" content="width=device-width, initial-scale=1"
     meta name="apple-mobile-web-app-capable" content="yes"
     meta name="apple-mobile-web-app-status-bar-style" content="black"
+    meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no'
   body
-    = render partial: "shared/header"
+    #viewport
 
-    #content
-
-      - if notice
-        p.alert.alert-success
-        = notice
-
-      - if alert
-        p.alert
-          = alert
-
-      = yield
+      = render partial: "shared/menu"
       
-    = render partial: "shared/footer"
+      #page
+        = render partial: "shared/header"
+        #body
+
+          - if notice
+            p.alert.alert-success
+            = notice
+
+          - if alert
+            p.alert
+              = alert
+
+          = yield
+        
+          = render partial: "shared/footer"

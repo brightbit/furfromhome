@@ -1,0 +1,13 @@
+#menu
+  .scrollable
+    = form_tag root_path, method: :get, id: "pets-index" do
+      ul.form-search.sidebar
+        li= text_field_tag :near,          params[:near], placeholder: "Near location"
+        li= select_tag     :listing_type,  options_for_select([:lost, :found], params[:listing_type]), prompt: "Lost and found"
+        li= text_field_tag :missing_since, params[:missing_since], placeholder: "Missing since"
+        li= select_tag :animal,            options_for_select(Breed.uniq.pluck(:species), params[:animal]), prompt: 'Any animal'
+        li= select_tag :color,             options_for_select(Pet::COLORS, params[:color]), prompt: 'Any color'
+        li= select_tag :gender,            options_for_select([:male, :female], params[:gender]), prompt: 'Any gender'
+        -#TODO: Make dynamic based on animal
+        li= select_tag :breed_id,          options_from_collection_for_select(BreedName.select(:id, :name), 'id', 'name', params[:breed_id]), prompt: 'Any breed', class: "chosen"
+        li= submit_tag "Search", name: nil, class: "btn btn-primary"

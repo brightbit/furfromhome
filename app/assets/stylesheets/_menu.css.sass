@@ -1,0 +1,57 @@
+#viewport,
+#page
+  min-height: 100%
+
+#close-mask
+  display: none
+  position: absolute
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  z-index: 999
+  background-color: transparent
+
+
+#page
+  background: #f0f0f0
+  position: relative
+  z-index: 2
+  -webkit-transition-property: -webkit-transform
+  -webkit-transform: translate3d(0, 0, 0)
+
+#menu
+  position: fixed
+  width: 260px
+  top: 0
+  left: 0
+  bottom: 0
+  @extend .list-simple
+  padding: 10px
+  background: #fff
+
+  ul
+    margin: 0
+  
+  li
+    list-style: none
+    height: 45px
+    padding: 5px 10px
+
+
+/* Animation */
+body.menu-opening #page,
+body.menu-closing #page
+  -webkit-transition-duration: 200ms
+  -webkit-transition-timing-function: ease-in
+
+body.menu-moving #page
+  -webkit-tap-highlight-color: rgba(0,0,0,0)
+  -webkit-user-select: none
+
+body.menu-open #close-mask
+  display: block
+
+body.menu-open #menu
+  overflow: auto
+  -webkit-overflow-scrolling: touch

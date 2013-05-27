@@ -1,5 +1,6 @@
 html
   background: #f0f0f0
+  height: 100%
 
 body
   background: #f0f0f0
@@ -7,7 +8,7 @@ body
   font-family: $font-copy
   font-size: 13px
   line-height: 18px
-  padding-top: 60px
+  min-height: 100%
 
 *
   @include box-sizing(border-box)
@@ -58,7 +59,6 @@ section
 
 .hidden
   display: none
-
 
 .actions
   position: absolute
@@ -158,6 +158,9 @@ div
 
 
 /* Content */
+#body
+  padding: 20px 0
+
 .page
   background: #fff
   margin: 20px -20px
@@ -194,21 +197,6 @@ div
   clear: both
   text-align: center
 
-.sidebar
-  @extend .list-simple
-  position: fixed
-  top: 50px
-  bottom: 0
-  left: 0
-  width: 220px
-  padding: 10px
-
-  li
-    padding: 10px 0
-
-  input, select
-    width: 100%
-
 .empty
   font-size: 18px
   margin: 40px 40px 100px
@@ -226,4 +214,4 @@ div
     width: 100%
 
   .column-slim
-    width: 340px
+    width: 250px

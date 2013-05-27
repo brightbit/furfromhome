@@ -8,6 +8,7 @@
 #= require chosen-jquery
 #= require dropkick
 #= require bootstrap-datepicker/core
+#= require menu
 
 $ ->
 
