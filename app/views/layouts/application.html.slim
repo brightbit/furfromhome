@@ -17,6 +17,15 @@ html
     = render partial: "shared/header"
 
     #content
+
+      - if notice
+        p.alert.alert-success
+        = notice
+
+      - if alert
+        p.alert
+          = alert
+
       = yield
       
     = render partial: "shared/footer"
