@@ -13,6 +13,7 @@ gem 'bootstrap-will_paginate', '~> 0.0.9'
 # gem 'carmen-rails',        '~> 1.0.0'
 gem 'chosen-rails',         '~> 0.9.14'
 gem 'dropkick-rails',       '~> 1.0.1'
+gem 'bootstrap-datepicker-rails'
 gem 'dalli',                '~> 2.6.3'
 gem 'devise',               '~> 3.0.0.rc'
 gem 'filepicker-rails',     '~> 0.1'  # Not SemVer

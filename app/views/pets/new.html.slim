@@ -1,8 +1,10 @@
 .container
 
-  p.page-actions = link_to "Back", pets_path, class: "ss-navigateleft"
+  .column-slim
 
-  .page
-    h2 New pet
+    p.page-actions = link_to "Back", pets_path, class: "ss-navigateleft"
 
-    == render 'form'
+    .page
+      h2.page-title Let's get this pet home
+
+      == render 'form'

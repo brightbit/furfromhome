@@ -1,8 +1,10 @@
 .container
 
-  p.page-actions = link_to "Back", pets_path, class: "ss-navigateleft"
+  .column-slim
+    p.page-actions = link_to "Back", pets_path, class: "ss-navigateleft"
 
-  .page
-    h2 Editing #{ @pet.name.present? ? @pet.name : "pet" }
+    .page
 
-    == render 'form'
+      h2.page-title Editing #{ @pet.name.present? ? @pet.name : "pet" }
+
+      == render 'form'

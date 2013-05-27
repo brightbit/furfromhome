@@ -7,9 +7,7 @@
 #= require packery.pkgd.min
 #= require chosen-jquery
 #= require dropkick
-
-##
-# App
+#= require bootstrap-datepicker/core
 
 $ ->
 
@@ -22,6 +20,9 @@ $ ->
     no_results_text: 'No results matched'
 
   $('select:not(.chosen)').dropkick()
+
+  $('.datepicker').datepicker
+    format: 'mm-dd-yyyy'
 
 
 ##
@@ -40,3 +41,6 @@ $(window).bind 'page:load', ->
     no_results_text: 'No results matched'
 
   $('select:not(.chosen)').dropkick()
+  
+  $('.datepicker').datepicker
+    format: 'mm-dd-yyyy'
