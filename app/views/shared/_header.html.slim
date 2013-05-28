@@ -1,6 +1,9 @@
 #close-mask
 header.site-header
-  .trigger.btn.ss-search Search
+
+  - unless @no_menu
+    .trigger.btn.ss-search Search
+
   = link_to 'Add a Pet', new_pet_path, class: "btn new-pet-link pull-right ss-plus"
 
   h1.logo

@@ -14,7 +14,7 @@ html
   body[class="#{ params[:controller].parameterize } #{params[:action]}#{" " + @body_class if @body_class.present?}"]
     #viewport
 
-      = render partial: "shared/menu"
+      = render partial: "shared/menu" unless @no_menu
       
       #page
         = render partial: "shared/header"
