@@ -159,8 +159,11 @@ abbr[title]
         background: $blue
 
 
-.form-actions
+.form-horizontal .form-actions
   margin-bottom: 0
   padding-bottom: 0
   background: none
   border-top-color: #f3f3f3
+  
+  @media screen and (max-width: $small-screen)
+    padding-left: 110px
