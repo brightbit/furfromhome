@@ -1,5 +1,6 @@
 #menu
   .scrollable
+    header Search
     = form_tag root_path, method: :get, id: "pets-index" do
       ul.form-search.sidebar
         li= text_field_tag :near,          params[:near], placeholder: "Near location"

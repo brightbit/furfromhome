@@ -1,28 +1,41 @@
 .site-header
   height: 50px
-  padding: 10px 20px
+  padding: 10px
   color: #fff
   background: #3691e0
-
-  a
-    color: #fff
-    text-shadow: 0 0.1em 0.1em darken($blue, 20%)
-    &.btn
-      color: $text-color
-      text-shadow: none
-      margin-top: 0
 
   h1.logo
     font-size: 28px
     text-align: center
     letter-spacing: -1px
     font-weight: normal
-    @media screen and (max-width: $small-screen)
-      font-size: 24px
+
+    a
+      color: #fff
+      text-shadow: 0 0.1em 0.1em darken($blue, 20%)
 
   .trigger
     float: left
-    font-size: 24px
-    line-height: 40px
-    margin-left: 10px
     cursor: pointer
+    display: none
+
+  .btn
+    @extend .btn-primary
+
+@media screen and (max-width: $medium-screen)
+  .site-header
+    .btn
+      display: block
+      font-size: 0
+      height: 30px
+      width: 36px
+      text-align: center
+      overflow: hidden
+      &:before
+        font-size: 15px
+        line-height: 22px
+        padding: 0
+      &.new-pet-link
+        &:before
+          font-size: 12px
+          line-height: 22px

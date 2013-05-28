@@ -2,6 +2,9 @@
 #page
   min-height: 100%
 
+#viewport
+  overflow: hidden
+
 #close-mask
   display: none
   position: absolute
@@ -10,19 +13,20 @@
   bottom: 0
   left: 0
   z-index: 999
-  background-color: transparent
+  background: #3691E0
+  opacity: .85
 
 
 #page
   background: #f0f0f0
   position: relative
   z-index: 2
-  -webkit-transition-property: -webkit-transform
-  -webkit-transform: translate3d(0, 0, 0)
   @include transition(all .25s)
+  @include translate(0, 0)
 
 #menu
   position: fixed
+  z-index: -1
   width: 260px
   top: 0
   left: 0
@@ -31,23 +35,35 @@
   padding: 10px
   background: #fff
 
+  header
+    height: 50px
+    line-height: 50px
+    margin: -10px -10px 20px
+    background: #fafafa
+    text-align: center
+    font-size: 24px
+    font-weight: 100
+
   ul
     margin: 0
   
   li
     list-style: none
     height: 45px
-    padding: 5px 10px
+    padding: 0 10px
+
+    .btn
+      width: 100%
+      padding: 8px 10px
 
 
 /* Animation */
 body.menu-open
-  #close-mask
-    display: block
 
   #menu
+    z-index: 1
     overflow: auto
     -webkit-overflow-scrolling: touch
 
   #page
-    @include translate3d(260px, 0, 0)
+    @include translate(260px, 0)

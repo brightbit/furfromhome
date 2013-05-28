@@ -8,11 +8,15 @@ form
 .btn
   color: $text-color
   text-shadow: none
+  &:before
+    font-size: .8em
+    position: relative
+    top: 0
+    margin-right: .5em
 
 .btn-primary
-  @include gradient-vertical(lighten($blue,10%), $blue)
-  background-color: $blue !important
-  border-color: $blue
+  background: lighten($blue,10%) !important
+  border-color: darken($blue, 5%)
   color: #fff
 
 button
@@ -55,6 +59,14 @@ textarea
 
   .control-label, .checkbox
     padding-top: 8px
+
+
+  @media screen and (max-width: $small-screen)
+    .control-label
+      width: 100px
+
+    .controls
+      margin-left: 110px
 
 
 
