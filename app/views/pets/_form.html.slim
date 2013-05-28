@@ -19,7 +19,7 @@
   .control-group
     label.control-label Animal
     .controls= select_tag :animal, options_for_select(Breed.uniq.pluck(:species), params[:animal]), prompt: 'Kind of animal'
-  = f.association :breed, prompt: 'Unknown'
+  = f.association :breed, prompt: 'Unknown', wrapper_html: { class: "#{'hidden' unless params[:animal]}" }
   = f.input :gender, collection: [:male, :female], prompt: "Select Gender"
   = f.input :color
   = f.input :markings, placeholder: "None"
@@ -30,7 +30,7 @@
   = f.input :name, placeholder: "Unknown"
   = f.input :description
   = f.input :collar
-  = f.input :collar_description, placeholder: "Color or pattern"
+  = f.input :collar_description, placeholder: "Color or pattern", wrapper_html: { class: "#{'hidden' unless @pet.collar == true}" }
   = f.input :chipped, label: "Microchipped"
   = f.input :injured
 
